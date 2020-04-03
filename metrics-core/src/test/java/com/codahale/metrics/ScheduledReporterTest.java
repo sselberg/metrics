@@ -106,7 +106,7 @@ public class ScheduledReporterTest {
     public void shouldUsePeriodAsInitialDelayIfNotSpecifiedOtherwise() throws Exception {
         reporterWithCustomMockExecutor.start(200, TimeUnit.MILLISECONDS);
 
-        verify(mockExecutor, times(1)).scheduleAtFixedRate(
+        verify(mockExecutor, times(1)).scheduleWithFixedDelay(
             any(Runnable.class), eq(200L), eq(200L), eq(TimeUnit.MILLISECONDS)
         );
     }
@@ -115,7 +115,7 @@ public class ScheduledReporterTest {
     public void shouldStartWithSpecifiedInitialDelay() throws Exception {
         reporterWithCustomMockExecutor.start(350, 100, TimeUnit.MILLISECONDS);
 
-        verify(mockExecutor).scheduleAtFixedRate(
+        verify(mockExecutor).scheduleWithFixedDelay(
             any(Runnable.class), eq(350L), eq(100L), eq(TimeUnit.MILLISECONDS)
         );
     }
